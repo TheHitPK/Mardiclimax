@@ -23,7 +23,7 @@ public class MapaPanel extends JPanel implements MouseMotionListener, MouseListe
     private final double ESCALA_MIN = Math.max(1200.0 / 1200, 700.0 / 784);
     private final double ESCALA_MAX = 3.0;
 
-    private JButton zoomInBtn, zoomOutBtn, volverBtn;
+    private JButton zoomInBtn, zoomOutBtn, volverBtn,muteBtn;
     private Point dragStart;
 
     public MapaPanel() {
@@ -36,6 +36,30 @@ public class MapaPanel extends JPanel implements MouseMotionListener, MouseListe
         } catch (IOException e) {
             System.err.println("No se pudo cargar la imagen del mapa.");
         }
+        ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
+        Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        ImageIcon icono16 = new ImageIcon(imagen16);
+        
+        ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
+        Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        ImageIcon icono15 = new ImageIcon(imagen15);
+        
+        JButton sonidoBtn = new JButton(icono16);     
+
+        sonidoBtn.setBounds(200, 10, 20, 20);
+        add(sonidoBtn);
+        
+        Sonido musica = Sonido.getInstancia();
+        
+        sonidoBtn.addActionListener(e -> {
+        if (musica.estaSonando()) {
+        sonidoBtn.setIcon(icono15);
+        musica.detenerSonido(); // mute
+        } else {
+        sonidoBtn.setIcon(icono16);
+        musica.reanudarSonido(); // unmute
+        }
+    });
 
         regionesOriginales.add(new PaisRegion("Estados Unidos", new Polygon(
             new int[]{173, 163, 187, 276, 288, 308, 300, 303, 356, 357, 293, 269, 235, 225, 217, 210, 194},

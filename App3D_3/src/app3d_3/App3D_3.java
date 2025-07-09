@@ -152,7 +152,7 @@ class LoginPanel extends JPanel {
         sonidoBtn.setBounds(10, 10, 20, 20);
         add(sonidoBtn);
         Sonido musica= Sonido.getInstancia();
-        musica.reproducirSonido("029184_cold-winter-74836.wav");
+        musica.reproducirSonido();
 
 
     sonidoBtn.addActionListener(e -> {
