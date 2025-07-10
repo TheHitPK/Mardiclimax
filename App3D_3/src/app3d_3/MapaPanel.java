@@ -37,16 +37,16 @@ public class MapaPanel extends JPanel implements MouseMotionListener, MouseListe
             System.err.println("No se pudo cargar la imagen del mapa.");
         }
         ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
-        Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen16 = unmute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono16 = new ImageIcon(imagen16);
         
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
-        Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen15 = mute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
         
         JButton sonidoBtn = new JButton(icono16);     
 
-        sonidoBtn.setBounds(200, 10, 20, 20);
+        sonidoBtn.setBounds(300, 10, 24, 24);
         add(sonidoBtn);
         
         Sonido musica = Sonido.getInstancia();

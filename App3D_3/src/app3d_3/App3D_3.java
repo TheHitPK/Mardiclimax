@@ -145,12 +145,15 @@ class LoginPanel extends JPanel {
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
         Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
+        
+        JButton sonidoBtn = new JButton(icono16);
+        add(sonidoBtn);
 
         
-        JButton sonidoBtn = new JButton(icono16);     
+          
         
         sonidoBtn.setBounds(10, 10, 20, 20);
-        add(sonidoBtn);
+        
         Sonido musica= Sonido.getInstancia();
         musica.reproducirSonido();
 
