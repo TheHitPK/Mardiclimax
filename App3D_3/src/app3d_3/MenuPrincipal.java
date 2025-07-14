@@ -118,7 +118,22 @@ public class MenuPrincipal extends JFrame {
         });
 
         btnEstadisticas.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Sección de estadísticas en desarrollo.");
+            JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600);
+            
+            frame.setLocationRelativeTo(null);
+            
+            Graficos2D panel = new Graficos2D();
+            panel.setPreferredSize(new Dimension(800, 300)); // espacio suficiente horizontal
+        
+            frame.add(new JScrollPane(panel)); // aquí usamos scroll automático
+            frame.setVisible(true);
+        
+            
+            
+            // aquí usamos scroll automático
+            frame.setVisible(true);
         });
     }
 
