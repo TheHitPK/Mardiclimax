@@ -13,6 +13,7 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 
 public class App3D_3 extends JPanel {
     public App3D_3(JFrame parentFrame) {
+        InicializadorBD.inicializar();
         setLayout(new BorderLayout());
 
         Canvas3D canvas3D = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
