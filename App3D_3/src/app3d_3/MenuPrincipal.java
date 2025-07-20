@@ -122,14 +122,34 @@ public class MenuPrincipal extends JFrame {
             JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 600);            
-            frame.setLocationRelativeTo(null);            
+            frame.setLocationRelativeTo(null);  
+            
             Graficos2D panel = new Graficos2D();
-            panel.setPreferredSize(new Dimension(800, 300)); // espacio suficiente horizontal
-        
-            frame.add(new JScrollPane(panel)); // aquí usamos scroll automático
-            frame.setVisible(true);            
-            // aquí usamos scroll automático
+            
+            
+            JButton paisesCalientes = new JButton("Paises Calientes");
+            JButton paisesFrios = new JButton("Paises Frios");
+            
+            panel.setPreferredSize(new Dimension(800, 300));// espacio suficiente horizontal
+            panel.add(paisesCalientes);
+            panel.add(paisesFrios);
+            
+            frame.add(panel);
             frame.setVisible(true);
+            
+            paisesCalientes.addActionListener(press -> panel.dibujoRepaintCaliente());
+            paisesFrios.addActionListener(press -> panel.dibujoRepaintFrio());
+            
+            
+            
+            //agregar boton de estadisticas de caliente
+            
+        
+             // aquí usamos scroll automático
+                       
+            // aquí usamos scroll automático
+           
+            
         });
     }
 
