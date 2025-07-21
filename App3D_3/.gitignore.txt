@@ -1,0 +1,5 @@
+# Ignorar el archivo generado del build
+build/
+
+# Ignorar archivos privados del proyecto
+nbproject/private/

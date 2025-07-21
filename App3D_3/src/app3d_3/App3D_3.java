@@ -13,6 +13,7 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 
 public class App3D_3 extends JPanel {
     public App3D_3(JFrame parentFrame) {
+        InicializadorBD.inicializar();
         setLayout(new BorderLayout());
 
         Canvas3D canvas3D = new Canvas3D(SimpleUniverse.getPreferredConfiguration());
@@ -145,14 +146,17 @@ class LoginPanel extends JPanel {
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
         Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
+        
+        JButton sonidoBtn = new JButton(icono16);
+        add(sonidoBtn);
 
         
-        JButton sonidoBtn = new JButton(icono16);     
+          
         
         sonidoBtn.setBounds(10, 10, 20, 20);
-        add(sonidoBtn);
+        
         Sonido musica= Sonido.getInstancia();
-        musica.reproducirSonido("029184_cold-winter-74836.wav");
+        musica.reproducirSonido();
 
 
     sonidoBtn.addActionListener(e -> {

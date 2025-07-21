@@ -14,11 +14,11 @@ public class MenuPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
-        Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen16 = unmute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono16 = new ImageIcon(imagen16);
         
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
-        Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen15 = mute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
         
         JButton sonidoBtn = new JButton(icono16);     
@@ -27,7 +27,7 @@ public class MenuPrincipal extends JFrame {
         JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("prueba.jpg")));
         fondo.setLayout(null);
         
-        sonidoBtn.setBounds(100, 10, 20, 20);
+        sonidoBtn.setBounds(100, 5, 24, 24);
         fondo.add(sonidoBtn);
         
         Sonido musica = Sonido.getInstancia();
@@ -118,7 +118,38 @@ public class MenuPrincipal extends JFrame {
         });
 
         btnEstadisticas.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Sección de estadísticas en desarrollo.");
+            dispose();
+            JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600);            
+            frame.setLocationRelativeTo(null);  
+            
+            Graficos2D panel = new Graficos2D();
+            
+            
+            JButton paisesCalientes = new JButton("Paises Calientes");
+            JButton paisesFrios = new JButton("Paises Frios");
+            
+            panel.setPreferredSize(new Dimension(800, 300));// espacio suficiente horizontal
+            panel.add(paisesCalientes);
+            panel.add(paisesFrios);
+            
+            frame.add(panel);
+            frame.setVisible(true);
+            
+            paisesCalientes.addActionListener(press -> panel.dibujoRepaintCaliente());
+            paisesFrios.addActionListener(press -> panel.dibujoRepaintFrio());
+            
+            
+            
+            //agregar boton de estadisticas de caliente
+            
+        
+             // aquí usamos scroll automático
+                       
+            // aquí usamos scroll automático
+           
+            
         });
     }
 

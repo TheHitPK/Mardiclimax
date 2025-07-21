@@ -19,7 +19,7 @@ public class Sonido {
     
     private javax.sound.sampled.Clip clip;
     
-     public void reproducirSonido(String rutaArchivo ) {
+     public void reproducirSonido() {
         try {
             InputStream audioSrc = getClass().getResourceAsStream("ambient-soundscapes-003-space-atmosphere-303242.wav");
             InputStream bufferedIn = new BufferedInputStream(audioSrc);
