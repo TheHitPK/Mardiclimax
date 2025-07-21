@@ -51,7 +51,7 @@ public class TituloAnimadoPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        String texto = "MARDICLIMAX";  // ← nuevo título
+        String texto = "VENTARRÓN";  // ← nuevo título
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);

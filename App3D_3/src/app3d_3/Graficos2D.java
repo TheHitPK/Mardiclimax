@@ -46,7 +46,11 @@ public class Graficos2D extends JPanel {
         g2.setFont(new Font("Arial", Font.PLAIN, 12));
         g2.setStroke(new BasicStroke(1f));
 
-        // 📏 Dibujar líneas de referencia y etiquetas de temperatura
+        
+        
+        // 🔍 Lógica para decidir qué dibujar
+        if (mostrarCalientes==1) {
+            // 📏 Dibujar líneas de referencia y etiquetas de temperatura
         for (int temp = minTemp; temp <= maxTemp; temp += pasoTemp) {
             int y = baseY - (temp * escalaY); // Aplicando escala
 
@@ -56,12 +60,19 @@ public class Graficos2D extends JPanel {
             g2.setColor(temp < 0 ? Color.RED : Color.DARK_GRAY);
             g2.drawString(temp + "°C", 20, y + 5);
         }
-        
-        // 🔍 Lógica para decidir qué dibujar
-        if (mostrarCalientes==1) {
             dibujarCalientes(anchoBarra, espacio, g2, paisesTemp, escalaY, baseY);
             
         } else if(mostrarCalientes==2) {
+            // 📏 Dibujar líneas de referencia y etiquetas de temperatura
+        for (int temp = minTemp; temp <= maxTemp; temp += pasoTemp) {
+            int y = baseY - (temp * escalaY); // Aplicando escala
+
+            g2.setColor(Color.LIGHT_GRAY);
+            g2.drawLine(margenIzquierdo, y, getWidth() - margenDerecho, y);
+
+            g2.setColor(temp < 0 ? Color.RED : Color.DARK_GRAY);
+            g2.drawString(temp + "°C", 20, y + 5);
+        }
             dibujarFrios(anchoBarra, espacio, g2, paisesTemp, escalaY, baseY);
         }
         

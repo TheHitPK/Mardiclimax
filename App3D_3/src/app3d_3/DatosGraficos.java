@@ -44,16 +44,6 @@ public class DatosGraficos {
     // Constructor principal con carga de datos climáticos
     public DatosGraficos() {
     if (!datosCargados) {
-        long inicioSecuencial = System.currentTimeMillis(); // 🕒 Comienza
-
-        for (String pais : paises) {
-            ClimaInfo clima = ClimaFetcher.obtenerClima(pais);
-            mapaTemperaturas.put(pais, clima.getTemperatura());
-        }
-
-        long finSecuencial = System.currentTimeMillis(); // 🕒 Termina
-        System.out.println("⏱ Tiempo secuencial: " + (finSecuencial - inicioSecuencial) + " ms");
-
         // 🧵 Llama a la API en paralelo
         long inicioParalelo = System.currentTimeMillis(); // 🕒 Comienza
 

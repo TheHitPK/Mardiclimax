@@ -11,7 +11,9 @@ public class MenuPrincipal extends JFrame {
         setSize(900, 500);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
         
         ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
         Image imagen16 = unmute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
@@ -79,7 +81,11 @@ public class MenuPrincipal extends JFrame {
 
         JMenuItem itemDesarrolladores = new JMenuItem("Desarrolladores");
         itemDesarrolladores.addActionListener(e -> {
-            String desarrolladores = "Armando Paris\nEduardo Chirinos\nManuel Ocando\nPablo Quintero\nRicardo Iriarte";
+            String desarrolladores = "Armando Paris. armandoparis222@gmail.com"
+                    + "\nEduardo Chirinos. eduardoortigoza86@gmail.com"
+                    + "\nManuel Ocando. manuelocandofaria@gmail.com"
+                    + "\nPablo Quintero. pablot1804@gmail.com"
+                    + "\nRicardo Iriarte. ririarte@gmail.com                                 ";
             JOptionPane.showMessageDialog(this, desarrolladores, "Desarrolladores", JOptionPane.INFORMATION_MESSAGE);
         });
 
@@ -121,18 +127,28 @@ public class MenuPrincipal extends JFrame {
             dispose();
             JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600);            
+            frame.setSize(800, 600);
+            frame.setUndecorated(true);            
             frame.setLocationRelativeTo(null);  
             
             Graficos2D panel = new Graficos2D();
             
             
-            JButton paisesCalientes = new JButton("Paises Calientes");
-            JButton paisesFrios = new JButton("Paises Frios");
+            JButton paisesCalientes = new JButton("Capitales mas Calientes");
+            JButton paisesFrios = new JButton("Capitales mas Frios");
             
             panel.setPreferredSize(new Dimension(800, 300));// espacio suficiente horizontal
             panel.add(paisesCalientes);
             panel.add(paisesFrios);
+            
+            JButton volverBtn = new JButton("Volver al menú");
+            
+            volverBtn.addActionListener(volver -> {
+                SwingUtilities.getWindowAncestor(panel).dispose();
+                SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
+            });
+
+            panel.add(volverBtn);
             
             frame.add(panel);
             frame.setVisible(true);
