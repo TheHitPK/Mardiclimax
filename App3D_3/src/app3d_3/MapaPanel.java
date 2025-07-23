@@ -68,7 +68,7 @@ public class MapaPanel extends JPanel implements MouseMotionListener, MouseListe
 
         regionesOriginales.add(new PaisRegion("Venezuela", new Polygon(
             new int[]{320,312,315,329,331,335,340,346,343,343,350,355,354,358,349,342,330,325,321,320,316},
-            new int[]{375, 384, 393, 399, 414, 420, 420, 414, 411, 407, 409, 403, 398, 391, 382, 382, 379, 376, 379, 385, 381},
+            new int[]{380, 389, 398, 404, 419, 425, 425, 419, 416, 412, 414, 408, 403, 396, 387, 387, 384, 381, 384, 390, 386},
             21), ClimaFetcher.obtenerClima("Venezuela")));
         
         regionesOriginales.add(new PaisRegion("Surinam", new Polygon(
@@ -104,8 +104,7 @@ new int[]{367,368,378,376,384,383},
 6),
 ClimaFetcher.obtenerClima("Nicaragua")));
         regionesOriginales.add(new PaisRegion("Niger ", new Polygon(
-new int[]{591, 587, 586, 574, 581, 585, 588, 593, 597, 610, 621, 621, 627, 630
-},
+new int[]{591, 587, 586, 574, 581, 585, 588, 593, 597, 610, 621, 621, 627, 630},
 new int[]{357, 357, 369, 371, 382, 381, 377, 376, 380, 380, 373, 369, 363, 350},14),
 ClimaFetcher.obtenerClima("Niger")));
         regionesOriginales.add(new PaisRegion("Groelandia", new Polygon(
@@ -169,15 +168,92 @@ new int[]{286,295,300,305,311,311,307,301,298,284},10),
 ClimaFetcher.obtenerClima("tunez")));
 
 
-regiones.add(new PaisRegion("libia", new Polygon(
+regionesOriginales.add(new PaisRegion("libia", new Polygon(
 new int[]{614,609,607,605,607,612,615,626,630,660,657,649,642,638,640,634,623},
 new int[]{301,307,312,331,335,335,338,341,340,353,307,302,302,305,310,312,304},17),
 ClimaFetcher.obtenerClima("libia")));
 
+// Colombia        
+regionesOriginales.add(new PaisRegion("Colombia", new Polygon(
+    new int[]{319,297,298,293,305,312,320,320,325,328,324,324,331,330,317,313,320},
+    new int[]{378, 400, 410, 425, 429, 439, 440, 445, 445, 433, 430, 422, 422, 405, 400, 391, 381},
+    17), ClimaFetcher.obtenerClima("Colombia")));
 
+regionesOriginales.add(new PaisRegion("Guyana Francesa", new Polygon(
+new int[]{381,380,379,383,390},
+new int[]{406,410,417,420,410},
+5),
+ClimaFetcher.obtenerClima("Cayenne")));
 
+regionesOriginales.add(new PaisRegion("Costa Rica", new Polygon(
+new int[]{266,266,275,278,274},
+new int[]{384,388,395,390,384},
+5),
+ClimaFetcher.obtenerClima("9.93,-84.08")));
 
+regionesOriginales.add(new PaisRegion("El Salvador", new Polygon(
+    new int[]{254, 256, 260, 260},
+    new int[]{374, 370, 372, 377},
+    4),
+    ClimaFetcher.obtenerClima("13.6894,-89.1872")
+));
+regionesOriginales.add(new PaisRegion("Guatemala", new Polygon(
+new int[]{246,254,261,257,256,249,251},
+new int[]{368,373,363,361,355,357,362},
+7),
+ClimaFetcher.obtenerClima("Guatemala")));
 
+regionesOriginales.add(new PaisRegion("Canada", new Polygon(
+    new int[]{187,277,310,302,332,350,367,385,402,387,376,371,374,355,340,333,325,325,294,325,328,345,356,349,336,328,313,288,261,241,212,198,164,177,183,175,180},
+new int[]{199, 214, 238, 253, 242, 235, 218, 222, 211, 171, 177, 173, 166, 153, 190, 191, 209, 189, 164, 135, 126, 127, 116, 104, 114, 87, 113, 98, 97, 74, 68, 63, 118, 130, 156, 167, 185},
+    37),
+    ClimaFetcher.obtenerClima("56.130366,-106.346771")));
+
+regionesOriginales.add(new PaisRegion("Cuba", new Polygon(
+    new int[]{279, 301, 301, 313, 313, 288},
+    new int[]{339, 345, 351, 348, 344, 334},
+    6),
+    ClimaFetcher.obtenerClima("21.5218,-77.7812")
+));
+
+regionesOriginales.add(new PaisRegion("Jamaica", new Polygon(
+    new int[]{298, 298, 305, 305},
+    new int[]{353, 357, 357, 353},
+    4),
+    ClimaFetcher.obtenerClima("18.1096,-77.2975")
+));
+
+regionesOriginales.add(new PaisRegion("Haití", new Polygon(
+    new int[]{321, 321, 314, 311, 312, 314},
+    new int[]{348, 357, 358, 357, 353, 347},
+    6),
+    ClimaFetcher.obtenerClima("18.9712,-72.2852")
+));
+regionesOriginales.add(new PaisRegion("Republica Dominicana", new Polygon(
+    new int[]{322, 322, 331, 332},
+    new int[]{348, 357, 356, 352},
+    4),
+    ClimaFetcher.obtenerClima("18.7357,-70.1627")
+));
+regionesOriginales.add(new PaisRegion("Puerto Rico", new Polygon(
+    new int[]{336, 336, 342, 343},
+    new int[]{353, 357, 357, 354},
+    4),
+    ClimaFetcher.obtenerClima("18.2208,-66.5901")
+));
+regionesOriginales.add(new PaisRegion("Bahamas", new Polygon(
+    new int[]{299, 304, 315, 308},
+    new int[]{326, 337, 337, 314},
+    4),
+    ClimaFetcher.obtenerClima("25.0343,-77.3963")
+));
+
+regionesOriginales.add(new PaisRegion("Chile", new Polygon(
+    new int[]{325, 332, 351, 364, 363, 360, 353, 345, 343, 334, 337, 331, 338, 338, 335, 327},
+    new int[]{502, 639, 660, 662, 653, 648, 647, 640, 618, 578, 565, 547, 522, 518, 518, 499},
+    16),
+    ClimaFetcher.obtenerClima("-35.6751,-71.5430")
+));
 
 
 
@@ -346,5 +422,17 @@ ClimaFetcher.obtenerClima("libia")));
         }
         limitarOffset();
         repaint();
+    }
+    
+    public static void main(String[] args) {
+        MapaPanel mapaPrueba = new MapaPanel(true);
+        JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           
+            frame.setSize(1200, 784);
+           frame.setResizable(false);
+            frame.setLocationRelativeTo(null);
+            frame.add(mapaPrueba);
+            frame.setVisible(true);
     }
 }
