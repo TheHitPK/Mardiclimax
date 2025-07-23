@@ -35,7 +35,7 @@ public class TituloAnimadoPanel extends JPanel {
 
     private void cargarFuentePersonalizada() {
         try {
-            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("Graduate-Regular.ttf")).deriveFont(Font.BOLD, 95f); // ← más pequeño
+            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("Graduate-Regular.ttf")).deriveFont(Font.BOLD, 95f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(fuentePersonalizada);
         } catch (FontFormatException | IOException e) {
@@ -51,13 +51,13 @@ public class TituloAnimadoPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        String texto = "VENTARRÓN";  // ← nuevo título
+        String texto = "VENTARRÓN";
 
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
 
-        Font fuente = fuentePersonalizada.deriveFont(95f * escala); // ← escala también ajustada
+        Font fuente = fuentePersonalizada.deriveFont(95f * escala);
         g2.setFont(fuente);
 
         FontMetrics fm = g2.getFontMetrics();
@@ -67,21 +67,31 @@ public class TituloAnimadoPanel extends JPanel {
         int x = (getWidth() - textoAncho) / 2;
         int y = (getHeight() + textoAlto) / 2 + 10;
 
-        // Sombra azul muy oscura
-        for (int i = 6; i > 0; i--) {
-            g2.setColor(new Color(0, 30, 90, 25));
+        // 🔵 Sombra azul clara más gruesa
+        for (int i = 10; i > 0; i--) {
+            g2.setColor(new Color(70, 140, 240, 25));
             g2.drawString(texto, x + i, y + i);
         }
 
-        // Gradiente azul oscuro → azul grisáceo
+        // ⚫ Bordes negros (contorno)
+        g2.setColor(Color.BLACK);
+        for (int dx = -2; dx <= 2; dx++) {
+            for (int dy = -2; dy <= 2; dy++) {
+                if (dx != 0 || dy != 0) {
+                    g2.drawString(texto, x + dx, y + dy);
+                }
+            }
+        }
+
+        // 🎨 Gradiente azul claro
         GradientPaint grad = new GradientPaint(
-            x, y - textoAlto, new Color(0, 70, 130),
-            x + textoAncho, y, new Color(0, 100, 150)
+            x, y - textoAlto, new Color(80, 150, 220), // azul más claro
+            x + textoAncho, y, new Color(110, 180, 240)
         );
         g2.setPaint(grad);
         g2.drawString(texto, x, y);
 
-        // Brillo blanco leve
+        // ✨ Brillo blanco leve
         g2.setColor(new Color(255, 255, 255, 30));
         g2.setStroke(new BasicStroke(2f));
         g2.drawString(texto, x, y);
