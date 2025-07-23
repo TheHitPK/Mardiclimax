@@ -54,10 +54,10 @@ public class Graficos2D extends JPanel {
         for (int temp = minTemp; temp <= maxTemp; temp += pasoTemp) {
             int y = baseY - (temp * escalaY); // Aplicando escala
 
-            g2.setColor(Color.LIGHT_GRAY);
+            g2.setColor(Color.white);
             g2.drawLine(margenIzquierdo, y, getWidth() - margenDerecho, y);
 
-            g2.setColor(temp < 0 ? Color.RED : Color.DARK_GRAY);
+            g2.setColor(temp < 0 ? Color.RED : Color.white);
             g2.drawString(temp + "°C", 20, y + 5);
         }
             dibujarCalientes(anchoBarra, espacio, g2, paisesTemp, escalaY, baseY);
@@ -67,10 +67,10 @@ public class Graficos2D extends JPanel {
         for (int temp = minTemp; temp <= maxTemp; temp += pasoTemp) {
             int y = baseY - (temp * escalaY); // Aplicando escala
 
-            g2.setColor(Color.LIGHT_GRAY);
+            g2.setColor(Color.white);
             g2.drawLine(margenIzquierdo, y, getWidth() - margenDerecho, y);
 
-            g2.setColor(temp < 0 ? Color.RED : Color.DARK_GRAY);
+            g2.setColor(temp < 0 ? Color.RED : Color.white);
             g2.drawString(temp + "°C", 20, y + 5);
         }
             dibujarFrios(anchoBarra, espacio, g2, paisesTemp, escalaY, baseY);
@@ -99,7 +99,7 @@ public class Graficos2D extends JPanel {
                 g2.fillRect(x, baseY, anchoBarra, -alturaVisual);
             }
 
-            g2.setColor(Color.BLACK);
+            g2.setColor(Color.white);
             g2.drawString(ciudad, x + 3, baseY + 20); // Etiqueta ciudad
 
             x += anchoBarra + espacio;
@@ -125,11 +125,11 @@ public class Graficos2D extends JPanel {
                 g2.setColor(Color.YELLOW);
                 g2.fillRect(x, baseY, anchoBarra, -alturaVisual);
             } else{
-                g2.setColor(Color.BLUE);
+                g2.setColor(Color.cyan);
                 g2.fillRect(x, baseY, anchoBarra, -alturaVisual);
             }
 
-            g2.setColor(Color.BLACK);
+            g2.setColor(Color.white);
             g2.drawString(ciudad, x + 3, baseY + 20); // Etiqueta ciudad
 
             x += anchoBarra + espacio;

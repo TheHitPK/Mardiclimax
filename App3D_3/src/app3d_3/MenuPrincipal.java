@@ -26,7 +26,7 @@ public class MenuPrincipal extends JFrame {
         JButton sonidoBtn = new JButton(icono16);     
 
         // Fondo
-        JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("prueba.jpg")));
+        JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("fondonuevo1.jpg")));
         fondo.setLayout(null);
         
         sonidoBtn.setBounds(100, 5, 24, 24);
@@ -124,49 +124,53 @@ public class MenuPrincipal extends JFrame {
         });
 
         btnEstadisticas.addActionListener(e -> {
-            dispose();
-            JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600);
-            frame.setUndecorated(true);            
-            frame.setLocationRelativeTo(null);  
-            
-            Graficos2D panel = new Graficos2D();
-            
-            
-            JButton paisesCalientes = new JButton("Capitales mas Calientes");
-            JButton paisesFrios = new JButton("Capitales mas Frios");
-            
-            panel.setPreferredSize(new Dimension(800, 300));// espacio suficiente horizontal
-            panel.add(paisesCalientes);
-            panel.add(paisesFrios);
-            
-            JButton volverBtn = new JButton("Volver al menú");
-            
-            volverBtn.addActionListener(volver -> {
-                SwingUtilities.getWindowAncestor(panel).dispose();
-                SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
-            });
+    dispose();
+    JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(800, 500);
+    frame.setUndecorated(true);            
+    frame.setLocationRelativeTo(null);  
 
-            panel.add(volverBtn);
-            
-            frame.add(panel);
-            frame.setVisible(true);
-            
-            paisesCalientes.addActionListener(press -> panel.dibujoRepaintCaliente());
-            paisesFrios.addActionListener(press -> panel.dibujoRepaintFrio());
-            
-            
-            
-            //agregar boton de estadisticas de caliente
-            
-        
-             // aquí usamos scroll automático
-                       
-            // aquí usamos scroll automático
-           
-            
-        });
+    // ---------- Fondo con imagen JPG ----------
+    // Asegúrate que "fondo.jpg" esté en el mismo paquete o en src/
+    ImageIcon fondoIcon = new ImageIcon(getClass().getResource("stats.jpg"));
+    JLabel background = new JLabel(fondoIcon);
+    background.setLayout(new BorderLayout()); // o null si quieres coordenadas absolutas
+    frame.setContentPane(background); // Establecer el JLabel como fondo
+    // ------------------------------------------
+
+    Graficos2D panel = new Graficos2D();
+    panel.setOpaque(false); // Para que no tape la imagen de fondo
+
+    JButton paisesCalientes = new JButton("Capitales mas Calientes");
+    JButton paisesFrios = new JButton("Capitales mas Frios");
+
+    panel.setPreferredSize(new Dimension(800, 500)); // espacio suficiente horizontal
+    panel.add(paisesCalientes);
+    panel.add(paisesFrios);
+
+    JButton volverBtn = new JButton("Volver al menú");
+
+    volverBtn.addActionListener(volver -> {
+        SwingUtilities.getWindowAncestor(panel).dispose();
+        SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
+    });
+
+    panel.add(volverBtn);
+
+    frame.add(panel, BorderLayout.SOUTH); // lo colocamos en la parte inferior del fondo
+    frame.setVisible(true);
+
+    paisesCalientes.addActionListener(press -> panel.dibujoRepaintCaliente());
+    paisesFrios.addActionListener(press -> panel.dibujoRepaintFrio());
+
+    //agregar boton de estadisticas de caliente
+
+    // aquí usamos scroll automático
+
+    // aquí usamos scroll automático
+
+});
     }
 
     // Método para crear botones estilizados
