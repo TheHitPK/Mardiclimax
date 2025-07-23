@@ -38,7 +38,7 @@ public class App3D_3 extends JPanel {
         BranchGroup root = new BranchGroup();
         BoundingSphere limites = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
 
-        TextureLoader starLoader = new TextureLoader(getClass().getResource("stars.jpg"), null);
+        TextureLoader starLoader = new TextureLoader(getClass().getResource("login.jpg"), null);
         Background fondo = new Background(starLoader.getImage());
         fondo.setApplicationBounds(limites);
         root.addChild(fondo);
@@ -48,7 +48,7 @@ public class App3D_3 extends JPanel {
         root.addChild(rotador);
 
         Appearance apariencia = new Appearance();
-        TextureLoader loader = new TextureLoader(getClass().getResource("earth.jpg"), null);
+        TextureLoader loader = new TextureLoader(getClass().getResource("1.jpeg"), null);
         Texture textura = loader.getTexture();
         apariencia.setTexture(textura);
 
@@ -57,8 +57,11 @@ public class App3D_3 extends JPanel {
         apariencia.setTextureAttributes(texAttr);
 
         Material material = new Material();
-        material.setDiffuseColor(new Color3f(1.0f, 1.0f, 1.0f));
-        apariencia.setMaterial(material);
+material.setAmbientColor(new Color3f(0.3f, 0.3f, 0.3f));  // luz base
+material.setDiffuseColor(new Color3f(0.8f, 0.8f, 0.8f));  // luz directa (mantiene visibilidad)
+material.setSpecularColor(new Color3f(0f, 0f, 0f));       // SIN reflejo
+material.setShininess(1.0f);                             // valor irrelevante sin specular
+
 
         Sphere planeta = new Sphere(0.45f, Sphere.GENERATE_TEXTURE_COORDS | Sphere.GENERATE_NORMALS, 64, apariencia);
         rotador.addChild(planeta);
@@ -68,7 +71,7 @@ public class App3D_3 extends JPanel {
         rotacion.setSchedulingBounds(limites);
         root.addChild(rotacion);
 
-        DirectionalLight luz = new DirectionalLight(new Color3f(1f, 1f, 1f), new Vector3f(-1f, -1f, -1f));
+        DirectionalLight luz = new DirectionalLight(new Color3f(4f, 4f, 4f), new Vector3f(-1f, -0.3f, -1f));
         luz.setInfluencingBounds(limites);
         root.addChild(luz);
 
@@ -105,114 +108,145 @@ class LoginPanel extends JPanel {
     private final JFrame parentFrame;
 
     public LoginPanel(JFrame parentFrame) {
-        this.parentFrame = parentFrame;
-        setBackground(new Color(5, 10, 30));
-        setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+    this.parentFrame = parentFrame;
+    setBackground(new Color(0, 0, 72)); // Azul más claro
+    setLayout(new BorderLayout());
 
-        Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
-        Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
+    // Panel central con GridBagLayout para el login
+    JPanel centroPanel = new JPanel(new GridBagLayout());
+    centroPanel.setOpaque(false); // transparente para ver fondo
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10);
+    gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JLabel titulo = new JLabel("Inicio de Sesión");
-        titulo.setFont(fuenteTitulo);
-        titulo.setForeground(Color.WHITE);
-        gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
-        add(titulo, gbc);
+    Font fuente = new Font("Segoe UI", Font.PLAIN, 14);
+    Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 20);
 
-        JLabel usuarioLbl = new JLabel("Usuario:");
-        usuarioLbl.setForeground(Color.WHITE);
-        usuarioLbl.setFont(fuente);
-        JTextField usuarioTxt = new JTextField(15);
+    JLabel titulo = new JLabel("Inicio de Sesión");
+    titulo.setFont(fuenteTitulo);
+    titulo.setForeground(Color.WHITE);
+    gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
+    centroPanel.add(titulo, gbc);
 
-        JLabel passLbl = new JLabel("Contraseña:");
-        passLbl.setForeground(Color.WHITE);
-        passLbl.setFont(fuente);
-        JPasswordField passTxt = new JPasswordField(15);
+    JLabel usuarioLbl = new JLabel("Usuario:");
+    usuarioLbl.setForeground(Color.WHITE);
+    usuarioLbl.setFont(fuente);
+    JTextField usuarioTxt = new JTextField(15);
 
-        JButton loginBtn = new JButton("Iniciar Sesión");
-        JButton registroBtn = new JButton("Registrarse");
+    JLabel passLbl = new JLabel("Contraseña:");
+    passLbl.setForeground(Color.WHITE);
+    passLbl.setFont(fuente);
+    JPasswordField passTxt = new JPasswordField(15);
 
-        loginBtn.setFont(fuente);
-        registroBtn.setFont(fuente);
+    // Estilo semi-transparente para campos de texto
+    Color fondoTransparente = new Color(255, 255, 255, 80); // Blanco con transparencia
 
-        ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
-        Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
-        ImageIcon icono16 = new ImageIcon(imagen16);
+    usuarioTxt.setBackground(fondoTransparente);
+    usuarioTxt.setOpaque(false);
+    usuarioTxt.setForeground(Color.WHITE);
+    usuarioTxt.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
-        Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
-        ImageIcon icono15 = new ImageIcon(imagen15);
+    passTxt.setBackground(fondoTransparente);
+    passTxt.setOpaque(false);
+    passTxt.setForeground(Color.WHITE);
+    passTxt.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        JButton sonidoBtn = new JButton(icono16);
-        add(sonidoBtn);
+    JButton loginBtn = new JButton("Iniciar Sesión");
+    JButton registroBtn = new JButton("Registrarse");
 
-        sonidoBtn.setBounds(10, 10, 20, 20);
+    loginBtn.setFont(fuente);
+    registroBtn.setFont(fuente);
 
-        Sonido musica = Sonido.getInstancia();
-        musica.reproducirSonido();
+    gbc.gridwidth = 1;
+    gbc.gridy = 1; gbc.gridx = 0; centroPanel.add(usuarioLbl, gbc);
+    gbc.gridx = 1; centroPanel.add(usuarioTxt, gbc);
+    gbc.gridy = 2; gbc.gridx = 0; centroPanel.add(passLbl, gbc);
+    gbc.gridx = 1; centroPanel.add(passTxt, gbc);
+    gbc.gridy = 3; gbc.gridx = 0; gbc.gridwidth = 2; centroPanel.add(loginBtn, gbc);
+    gbc.gridy = 4; centroPanel.add(registroBtn, gbc);
 
-        sonidoBtn.addActionListener(e -> {
-            if (musica.estaSonando()) {
-                sonidoBtn.setIcon(icono15);
-                musica.detenerSonido();
+    // Panel inferior para el botón de sonido
+    JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    bottomPanel.setOpaque(false);
+
+    // Iconos de sonido
+    ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
+    Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+    ImageIcon icono16 = new ImageIcon(imagen16);
+
+    ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
+    Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+    ImageIcon icono15 = new ImageIcon(imagen15);
+
+    JButton sonidoBtn = new JButton(icono16);
+    sonidoBtn.setPreferredSize(new Dimension(30, 30));
+    sonidoBtn.setBackground(new Color(0, 0, 0, 0));
+    sonidoBtn.setBorderPainted(false);
+    sonidoBtn.setContentAreaFilled(false);
+    sonidoBtn.setFocusPainted(false);
+
+    // Reproducción del sonido
+    Sonido musica = Sonido.getInstancia();
+    musica.reproducirSonido();
+
+    sonidoBtn.addActionListener(e -> {
+        if (musica.estaSonando()) {
+            sonidoBtn.setIcon(icono15);
+            musica.detenerSonido();
+        } else {
+            sonidoBtn.setIcon(icono16);
+            musica.reanudarSonido();
+        }
+    });
+
+    bottomPanel.add(sonidoBtn);
+
+    // Agregar paneles al layout principal
+    add(centroPanel, BorderLayout.CENTER);
+    add(bottomPanel, BorderLayout.SOUTH);
+
+    loginBtn.addActionListener(e -> {
+        String user = usuarioTxt.getText().trim();
+        String pass = new String(passTxt.getPassword()).trim();
+
+        if (user.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, rellena los campos.");
+            return;
+        }
+
+        try (Connection conn = ConexionBD.conectar()) {
+            String sql = "SELECT nombre FROM usuario WHERE nickname = ? AND contrasena = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user);
+            stmt.setString(2, pass);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String nombre = rs.getString("nombre");
+                JOptionPane.showMessageDialog(this, "¡Bienvenido, " + nombre + "!");
+                parentFrame.dispose();
+                JFrame zoomVentana = new VentanaZoomConLoading();
+
+                Timer timer = new Timer(6000, evt -> {
+                    zoomVentana.dispose();
+                    SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
+                });
+                timer.setRepeats(false);
+                timer.start();
+
             } else {
-                sonidoBtn.setIcon(icono16);
-                musica.reanudarSonido();
+                JOptionPane.showMessageDialog(this, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        });
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error en la conexión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    });
 
-        gbc.gridwidth = 1;
-        gbc.gridy = 1; gbc.gridx = 0; add(usuarioLbl, gbc);
-        gbc.gridx = 1; add(usuarioTxt, gbc);
-        gbc.gridy = 2; gbc.gridx = 0; add(passLbl, gbc);
-        gbc.gridx = 1; add(passTxt, gbc);
-        gbc.gridy = 3; gbc.gridx = 0; gbc.gridwidth = 2; add(loginBtn, gbc);
-        gbc.gridy = 4; add(registroBtn, gbc);
+    registroBtn.addActionListener(e -> {
+        new RegistroDialog(parentFrame).setVisible(true);
+    });
+}
 
-        loginBtn.addActionListener(e -> {
-            String user = usuarioTxt.getText().trim();
-            String pass = new String(passTxt.getPassword()).trim();
-
-            if (user.isEmpty() || pass.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor, rellena los campos.");
-                return;
-            }
-
-            try (Connection conn = ConexionBD.conectar()) {
-                String sql = "SELECT nombre FROM usuario WHERE nickname = ? AND contrasena = ?";
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                stmt.setString(1, user);
-                stmt.setString(2, pass);
-                ResultSet rs = stmt.executeQuery();
-
-                if (rs.next()) {
-                    String nombre = rs.getString("nombre");
-                    JOptionPane.showMessageDialog(this, "¡Bienvenido, " + nombre + "!");
-                    parentFrame.dispose();
-                    JFrame zoomVentana = new VentanaZoomConLoading();
-                        
-                    Timer timer = new Timer(4000, evt -> {
-                        zoomVentana.dispose();
-                        
-                        SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
-                    });
-                    timer.setRepeats(false);
-                    timer.start();
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Error en la conexión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        });
-
-        registroBtn.addActionListener(e -> {
-            new RegistroDialog(parentFrame).setVisible(true);
-        });
-    }
 }
 
 // RegistroDialog.java
@@ -228,9 +262,10 @@ class RegistroDialog extends JDialog {
         setResizable(false);
         setLocationRelativeTo(parent);
         
+        
 
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(10, 20, 50));
+        panel.setBackground(new Color(0, 0, 72));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(8, 10, 8, 10);
         gbc.anchor = GridBagConstraints.WEST;
