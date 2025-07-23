@@ -10,7 +10,6 @@ import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.image.TextureLoader;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
-
 public class App3D_3 extends JPanel {
     public App3D_3(JFrame parentFrame) {
         InicializadorBD.inicializar();
@@ -78,7 +77,7 @@ public class App3D_3 extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame ventana = new JFrame("Planeta Tierra 3D - Login");
+            JFrame ventana = new JFrame("Ventarrón Clima - Login");
             App3D_3 contenido = new App3D_3(ventana);
             ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             ventana.setContentPane(contenido);
@@ -86,7 +85,6 @@ public class App3D_3 extends JPanel {
             ventana.setResizable(false);
             ventana.setLocationRelativeTo(null);
             ventana.setVisible(true);
-            
         });
     }
 }
@@ -138,36 +136,32 @@ class LoginPanel extends JPanel {
 
         loginBtn.setFont(fuente);
         registroBtn.setFont(fuente);
-        
+
         ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
         Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
         ImageIcon icono16 = new ImageIcon(imagen16);
-        
+
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
         Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
-        
+
         JButton sonidoBtn = new JButton(icono16);
         add(sonidoBtn);
 
-        
-          
-        
         sonidoBtn.setBounds(10, 10, 20, 20);
-        
-        Sonido musica= Sonido.getInstancia();
+
+        Sonido musica = Sonido.getInstancia();
         musica.reproducirSonido();
 
-
-    sonidoBtn.addActionListener(e -> {
-        if (musica.estaSonando()) {
-        sonidoBtn.setIcon(icono15);
-        musica.detenerSonido(); // mute
-        } else {
-        sonidoBtn.setIcon(icono16);
-        musica.reanudarSonido(); // unmute
-        }
-    });
+        sonidoBtn.addActionListener(e -> {
+            if (musica.estaSonando()) {
+                sonidoBtn.setIcon(icono15);
+                musica.detenerSonido();
+            } else {
+                sonidoBtn.setIcon(icono16);
+                musica.reanudarSonido();
+            }
+        });
 
         gbc.gridwidth = 1;
         gbc.gridy = 1; gbc.gridx = 0; add(usuarioLbl, gbc);
@@ -177,51 +171,52 @@ class LoginPanel extends JPanel {
         gbc.gridy = 3; gbc.gridx = 0; gbc.gridwidth = 2; add(loginBtn, gbc);
         gbc.gridy = 4; add(registroBtn, gbc);
 
-loginBtn.addActionListener(e -> {
-    String user = usuarioTxt.getText().trim();
-    String pass = new String(passTxt.getPassword()).trim();
+        loginBtn.addActionListener(e -> {
+            String user = usuarioTxt.getText().trim();
+            String pass = new String(passTxt.getPassword()).trim();
 
-    if (user.isEmpty() || pass.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor, rellena los campos.");
-        return;
-    }
+            if (user.isEmpty() || pass.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, rellena los campos.");
+                return;
+            }
 
-    try (Connection conn = ConexionBD.conectar()) {
-        String sql = "SELECT nombre FROM usuario WHERE nickname = ? AND contrasena = ?";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, user);
-        stmt.setString(2, pass);
-        ResultSet rs = stmt.executeQuery();
+            try (Connection conn = ConexionBD.conectar()) {
+                String sql = "SELECT nombre FROM usuario WHERE nickname = ? AND contrasena = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, user);
+                stmt.setString(2, pass);
+                ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            String nombre = rs.getString("nombre");
-            JOptionPane.showMessageDialog(this, "¡Bienvenido, " + nombre + "!");
+                if (rs.next()) {
+                    String nombre = rs.getString("nombre");
+                    JOptionPane.showMessageDialog(this, "¡Bienvenido, " + nombre + "!");
+                    parentFrame.dispose();
+                    JFrame zoomVentana = new VentanaZoomConLoading();
+                        
+                    Timer timer = new Timer(4000, evt -> {
+                        zoomVentana.dispose();
+                        
+                        SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
 
-            // Simula carga con Timer y abre el menú principal
-            Timer timer = new Timer(2000, evt -> {
-                parentFrame.dispose();
-                SwingUtilities.invokeLater(() -> {
-                    new MenuPrincipal().setVisible(true);
-                });
-            });
-            timer.setRepeats(false);
-            timer.start();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Error en la conexión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-});
-
+                } else {
+                    JOptionPane.showMessageDialog(this, "Credenciales incorrectas.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Error en la conexión: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
 
         registroBtn.addActionListener(e -> {
             new RegistroDialog(parentFrame).setVisible(true);
         });
     }
-    
 }
+
+// RegistroDialog.java
+// ... (sin cambios del original que enviaste)
 
 
 // RegistroDialog.java
