@@ -733,9 +733,197 @@ new int[]{448,440,433,428,411,410,414,414,410,411,419,432,457,458,469,472,477,46
 ClimaFetcher.obtenerClima("-4.038333,21.758664")));
 
 regionesOriginales.add(new PaisRegion("Uganda", new Polygon(
-new int[]{685,695,697,693,684,681,686},
-new int[]{431,431,439,429,431,428,420},7),
-ClimaFetcher.obtenerClima ("0.313611,32.581111")));
+new int[]{680,686,685,695,697,694,684},
+new int[]{428,420,413,413,420,428,431},7),
+ClimaFetcher.obtenerClima("-22.95764,18.49041")));
+
+regionesOriginales.add(new PaisRegion("Marruecos", new Polygon(
+new int[]{511,526,551,566,568,561,555,543,543,530,530,526,526},
+new int[]{347,324,294,293,306,307,315,318,330,330,340,341,347},13),
+ClimaFetcher.obtenerClima("31.7945,-7.0849")));
+
+regionesOriginales.add(new PaisRegion("Argelia", new Polygon(
+new int[]{568,570,562,557,545,545,584,591,613,605,604,599,599,598,592},
+new int[]{294,308,309,316,320,325,356,356,339,333,312,303,296,288,286},15),
+ClimaFetcher.obtenerClima("28.0,3.0")));
+regionesOriginales.add(new PaisRegion("Mauritania", new Polygon(
+new int[]{545,553,549,554,534,530,522,515,512,527,528,532,532,544},
+new int[]{328,334,335,369,370,371,365,367,350,350,343,342,333,333},14),
+ClimaFetcher.obtenerClima("20.0,-12.0")));
+
+regionesOriginales.add(new PaisRegion("Malí", new Polygon(
+new int[]{556,586,585,570,556,553,543,542,534,532,556,551},
+new int[]{336,358,368,370,380,387,387,381,381,373,371,336},12),
+ClimaFetcher.obtenerClima("17.0,-4.0")));
+
+regionesOriginales.add(new PaisRegion("Guinea", new Polygon(
+new int[]{519,525,540,542,540,533,528,523},
+new int[]{389,383,383,394,398,390,390,395},8),
+ClimaFetcher.obtenerClima("10.7226,-10.7084")));
+
+regionesOriginales.add(new PaisRegion("Burkina Faso", new Polygon(
+new int[]{555,556,569,574,581,574,562,560},
+new int[]{388,382,372,372,382,386,386,390},8),
+ClimaFetcher.obtenerClima("12.2383,-1.5616")));
+
+regionesOriginales.add(new PaisRegion("Ghana", new Polygon(
+new int[]{566,562,564,572,574},
+new int[]{409,401,388,389,406},5),
+ClimaFetcher.obtenerClima("7.9465,-1.0232")));
+
+
+regionesOriginales.add(new PaisRegion("Sierra Leona", new Polygon(
+new int[]{523,527,531,534,530},
+new int[]{396,392,392,396,402},5),
+ClimaFetcher.obtenerClima("8.4606,-11.7799")));
+
+// Pakistan 
+
+regionesOriginales.add(new PaisRegion("Pakistán", new Polygon(
+new int[]{811,784,789,787,800,800,810,814,812,822,834,822,823,828,820,813,812,818,818},
+new int[]{334,328,322,315,310,304,300,285,281,274,285,287,293,297,316,317,320,326,331},19),
+ClimaFetcher.obtenerClima("Pakistan")));
+
+// Afganistán
+
+regionesOriginales.add(new PaisRegion("Afganistán", new Polygon(
+new int[]{786,800,800,810,811,814,812,819,814,810,809,804,804,792,784,775,777,781,782,780},
+new int[]{315,310,305,300,288,285,281,276,276,277,272,274,276,277,286,286,303,303,306,310},20),
+ClimaFetcher.obtenerClima("Afghanistan")));
+
+// Tayikistán
+
+regionesOriginales.add(new PaisRegion("Tayikistán", new Polygon(
+new int[]{821,819,815,813,802,801,804,803,801,795,798,798,804,804,808,809,809,814,814,819},
+new int[]{275,268,268,265,266,264,263,260,260,267,269,276,276,273,271,272,277,277,274,274},20),
+ClimaFetcher.obtenerClima("Tajikistan")));
+
+//Kirguistán
+
+regionesOriginales.add(new PaisRegion("Kirguistán", new Polygon(
+new int[]{831,812,810,807,803,803,813,804,802,813,817,824},
+new int[]{251,248,253,250,251,256,260,263,266,266,260,260},12),
+ClimaFetcher.obtenerClima("Kyrgyzstan")));
+
+// Nepal
+regionesOriginales.add(new PaisRegion("Nepal", new Polygon(
+new int[]{854,875,875,857,847,847},
+new int[]{304,312,317,316,312,306},6),
+ClimaFetcher.obtenerClima("Nepal")));
+
+regionesOriginales.add(new PaisRegion("Siria", new Polygon(
+    new int[]{696,690,690,693,693,696,710,711},
+    new int[]{286,289,293,294,302,303,293,284},
+    8), ClimaFetcher.obtenerClima("Siria")));
+regionesOriginales.add(new PaisRegion("Irak", new Polygon(
+    new int[]{713,711,703,703,711,723,730,734,738,731,727,723,725,719},
+    new int[]{283,292,299,303,304,314,315,310,311,302,300,294,289,282},
+    14), ClimaFetcher.obtenerClima("Irak")));
+
+regionesOriginales.add(new PaisRegion("Kuwait", new Polygon(
+    new int[]{731,731,736,737,734},
+    new int[]{312,316,318,312,310},
+    5), ClimaFetcher.obtenerClima("Kuwait")));
+
+regionesOriginales.add(new PaisRegion("Catar", new Polygon(
+    new int[]{748,751,752,748},
+    new int[]{332,333,325,325},
+    4), ClimaFetcher.obtenerClima("Catar")));
+
+regionesOriginales.add(new PaisRegion("Omán", new Polygon(
+    new int[]{759,760,767,782,768,765,765,765},
+    new int[]{354,362,363,340,330,332,340,348},
+    8), ClimaFetcher.obtenerClima("Oman")));
+
+regionesOriginales.add(new PaisRegion("Yemen", new Polygon(
+    new int[]{722,724,728,758,759,754,742,735,727},
+    new int[]{365,375,379,367,363,354,358,365,360},
+    9), ClimaFetcher.obtenerClima("Yemen")));
+
+regionesOriginales.add(new PaisRegion("Emiratos Árabes Unidos", new Polygon(
+    new int[]{750,750,763,768,764,759},
+    new int[]{334,340,339,327,327,333},
+    6), ClimaFetcher.obtenerClima("23.424076,53.847818")));
+
+regionesOriginales.add(new PaisRegion("Arabia Saudita", new Polygon(
+    new int[]{702,700,701,695,690,691,708,708,715,721,726,735,740,765,765,750,749,740,730,722,711},
+    new int[]{304,307,312,317,317,322,342,348,353,364,360,365,360,348,341,338,334,320,315,315,304},
+    21), ClimaFetcher.obtenerClima("23.8859,45.0792")));
+
+regionesOriginales.add(new PaisRegion("Líbano", new Polygon(
+    new int[]{689,693,692,688},
+    new int[]{293,294,299,299},
+    4), ClimaFetcher.obtenerClima("33.8547,35.8623")));
+
+regionesOriginales.add(new PaisRegion("Israel", new Polygon(
+    new int[]{688,686,689,692},
+    new int[]{300,306,314,300},
+    4), ClimaFetcher.obtenerClima("31.0461,34.8516")));
+
+regionesOriginales.add(new PaisRegion("Jordania", new Polygon(
+    new int[]{693,689,694,700,699,702,701,697},
+    new int[]{303,316,316,312,307,304,300,303},
+    8), ClimaFetcher.obtenerClima("30.5852,36.2384")));
+
+// Banglades
+regionesOriginales.add(new PaisRegion("Bangladesh", new Polygon(
+new int[]{881,880,876,877,882,890,888,888,892,892,894,894,892,891,887},
+new int[]{338,330,322,320,323,324,328,330,330,334,336,340,340,337,338},15),
+ClimaFetcher.obtenerClima("Bangladesh")));
+
+// Butan
+
+regionesOriginales.add(new PaisRegion("Butan", new Polygon(
+new int[]{877,886,887,880},
+new int[]{312,311,316,316},4),
+ClimaFetcher.obtenerClima("Butan")));
+
+// Myanmar
+regionesOriginales.add(new PaisRegion("Myanmar", new Polygon(
+new int[]{899,897,893,903,911,915,919,921,918,919,913,913,923,924,917,916,911,909,912,904},
+new int[]{316,329,342,358,356,369,375,383,366,358,350,344,340,336,335,329,326,322,315,308},20),
+ClimaFetcher.obtenerClima("Myanmar")));
+
+// Tailandia
+
+regionesOriginales.add(new PaisRegion("Tailandia", new Polygon(
+new int[]{936,924,925,935,924,926,943,943,934,926,926,922,913,912,919,918,923,923,920,927,931},
+new int[]{401,388,370,377,371,365,366,360,350,352,346,341,344,350,357,366,373,381,390,397,402},21),
+ClimaFetcher.obtenerClima("Tailandia")));
+
+// Laos
+regionesOriginales.add(new PaisRegion("Laos", new Polygon(
+new int[]{925,923,926,927,934,943,943,950,950,936,938,936,930,929},
+new int[]{332,340,346,353,350,359,366,364,360,345,342,338,337,331},14),
+ClimaFetcher.obtenerClima("Laos")));
+
+// Camboya
+regionesOriginales.add(new PaisRegion("Camboya", new Polygon(
+new int[]{951,946,937,934,933,936,935,940,950},
+new int[]{365,368,365,368,371,373,377,383,377},9),
+ClimaFetcher.obtenerClima("Camboya")));
+
+// Vietnam
+regionesOriginales.add(new PaisRegion("Vietnam", new Polygon(
+new int[]{929,939,946,942,957,956,947,941,950,951,936,938,937,930},
+new int[]{331,328,336,344,364,382,389,384,376,360,346,343,338,338},14),
+ClimaFetcher.obtenerClima("Vietnam")));
+
+// Australia
+
+regionesOriginales.add(new PaisRegion("Australia", new Polygon(
+new int[]{962,1022,1023,1033,1033,1065,1100,1080,1067,1052,1057,1033,999,966,961},
+new int[]{584,575,585,586,608,614,551,480,510,500,484,484,504,522,571},15),
+ClimaFetcher.obtenerClima("Australia")));
+
+
+
+
+
+
+
+
+
 
 
 
