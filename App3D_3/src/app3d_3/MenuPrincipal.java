@@ -142,13 +142,14 @@ public class MenuPrincipal extends JFrame {
     Graficos2D panel = new Graficos2D();
     panel.setOpaque(false); // Para que no tape la imagen de fondo
 
-    JButton paisesCalientes = new JButton("Capitales mas Calientes");
-    JButton paisesFrios = new JButton("Capitales mas Frios");
+    JButton paisesCalientes = new JButton("Paises mas Calientes");
+    JButton paisesFrios = new JButton("Paises mas Frios");
 
     panel.setPreferredSize(new Dimension(800, 500)); // espacio suficiente horizontal
     panel.add(paisesCalientes);
     panel.add(paisesFrios);
 
+    
     JButton volverBtn = new JButton("Volver al menú");
 
     volverBtn.addActionListener(volver -> {

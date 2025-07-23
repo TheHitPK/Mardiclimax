@@ -28,7 +28,7 @@ public class Graficos2D extends JPanel {
         
 
         int anchoBarra = 40;
-        int espacio = 20;
+        int espacio = 30;
         int margenIzquierdo = 60;
         int margenDerecho = 60;
 
@@ -100,7 +100,7 @@ public class Graficos2D extends JPanel {
             }
 
             g2.setColor(Color.white);
-            g2.drawString(ciudad, x + 3, baseY + 20); // Etiqueta ciudad
+            g2.drawString(ciudad, x + 3, baseY + 25); // Etiqueta ciudad
 
             x += anchoBarra + espacio;
         }
