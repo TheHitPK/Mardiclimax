@@ -11,14 +11,16 @@ public class MenuPrincipal extends JFrame {
         setSize(900, 500);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
         
         ImageIcon unmute = new ImageIcon(getClass().getResource("icons8-megáfono-40.png"));
-        Image imagen16 = unmute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen16 = unmute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono16 = new ImageIcon(imagen16);
         
         ImageIcon mute = new ImageIcon(getClass().getResource("megafonoSinEscuchar.png"));
-        Image imagen15 = mute.getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH);
+        Image imagen15 = mute.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
         ImageIcon icono15 = new ImageIcon(imagen15);
         
         JButton sonidoBtn = new JButton(icono16);     
@@ -27,7 +29,7 @@ public class MenuPrincipal extends JFrame {
         JLabel fondo = new JLabel(new ImageIcon(getClass().getResource("prueba.jpg")));
         fondo.setLayout(null);
         
-        sonidoBtn.setBounds(100, 10, 20, 20);
+        sonidoBtn.setBounds(100, 5, 24, 24);
         fondo.add(sonidoBtn);
         
         Sonido musica = Sonido.getInstancia();
@@ -79,7 +81,11 @@ public class MenuPrincipal extends JFrame {
 
         JMenuItem itemDesarrolladores = new JMenuItem("Desarrolladores");
         itemDesarrolladores.addActionListener(e -> {
-            String desarrolladores = "Armando Paris\nEduardo Chirinos\nManuel Ocando\nPablo Quintero\nRicardo Iriarte";
+            String desarrolladores = "Armando Paris. armandoparis222@gmail.com"
+                    + "\nEduardo Chirinos. eduardoortigoza86@gmail.com"
+                    + "\nManuel Ocando. manuelocandofaria@gmail.com"
+                    + "\nPablo Quintero. pablot1804@gmail.com"
+                    + "\nRicardo Iriarte. ririarte@gmail.com                                 ";
             JOptionPane.showMessageDialog(this, desarrolladores, "Desarrolladores", JOptionPane.INFORMATION_MESSAGE);
         });
 
@@ -118,7 +124,48 @@ public class MenuPrincipal extends JFrame {
         });
 
         btnEstadisticas.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Sección de estadísticas en desarrollo.");
+            dispose();
+            JFrame frame = new JFrame("Gráfico de Barras con Java 2D");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600);
+            frame.setUndecorated(true);            
+            frame.setLocationRelativeTo(null);  
+            
+            Graficos2D panel = new Graficos2D();
+            
+            
+            JButton paisesCalientes = new JButton("Capitales mas Calientes");
+            JButton paisesFrios = new JButton("Capitales mas Frios");
+            
+            panel.setPreferredSize(new Dimension(800, 300));// espacio suficiente horizontal
+            panel.add(paisesCalientes);
+            panel.add(paisesFrios);
+            
+            JButton volverBtn = new JButton("Volver al menú");
+            
+            volverBtn.addActionListener(volver -> {
+                SwingUtilities.getWindowAncestor(panel).dispose();
+                SwingUtilities.invokeLater(() -> new MenuPrincipal().setVisible(true));
+            });
+
+            panel.add(volverBtn);
+            
+            frame.add(panel);
+            frame.setVisible(true);
+            
+            paisesCalientes.addActionListener(press -> panel.dibujoRepaintCaliente());
+            paisesFrios.addActionListener(press -> panel.dibujoRepaintFrio());
+            
+            
+            
+            //agregar boton de estadisticas de caliente
+            
+        
+             // aquí usamos scroll automático
+                       
+            // aquí usamos scroll automático
+           
+            
         });
     }
 
